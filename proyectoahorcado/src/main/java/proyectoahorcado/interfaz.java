@@ -64,19 +64,19 @@ public class Interfaz extends javax.swing.JFrame {
         btnIngresar.setFont(fuente);
         btnIngresar.setAlignmentX(CENTER_ALIGNMENT);
 
-        //le ponemos acciones a los botones
+        //Iniciamos la acción del botón Ingresar que validará las letras ingresadas
         btnIngresar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String texto = ingresarLetra.getText().toLowerCase(); // Obtiene la letra ingresada y la convierte a minúscula
-                if (texto.length() == 1) { // Verifica que se haya ingresado solo una letra
-                    char letra = texto.charAt(0); // Obtiene el primer carácter del texto
-                    boolean acierto = ahorcado.probarLetra(letra); // Prueba la letra en la lógica
-                    actualizarInterfaz(); // Actualiza la interfaz con el nuevo estado del juego
-                    if (ahorcado.partidaTerminada()) { // Verifica si el juego ha terminado
-                        if (ahorcado.victoria()) { // Verifica si hay victoria
-                            mensajeFinal.setText("Felicidades, has ganado...");
-                        } else { // Si no, el jugador ha perdido
+                String texto = ingresarLetra.getText().toLowerCase(); //Obtenemos la letra ingreada y la pasamos a minúscula
+                if (texto.length() == 1) { // Verifica que se haya ingresado una sola letra
+                    char letra = texto.charAt(0); //Saca el primer carácter del texto
+                    boolean acierto = ahorcado.probarLetra(letra); //Prueba la letra en la lógica
+                    actualizarInterfaz(); //Se actualiza la interfaz con el estado actual del juego
+                    if (ahorcado.partidaTerminada()) { //Verificamos si el juego ha terminado
+                        if (ahorcado.victoria()) { //Verifica si hay victoria
+                            mensajeFinal.setText("Felicidades, has ganado..."); //Si hay victoria mostramos el mensaje
+                        }else { //si no ha ganado pues es que ha perdido...
                             mensajeFinal.setText("Jodete, la palabra era: " + ahorcado.getProgresoPalabra()+ " ¡Ja!");
                         }
                     }
@@ -86,6 +86,41 @@ public class Interfaz extends javax.swing.JFrame {
                 ingresarLetra.setText(""); // Limpia el campo de texto
             }
         });
+
+        //Iniciamos la acción del botón Reiniciar para reiniciar el juego
+        btnReiniciar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPasswordField palabraOculta = new JPasswordField(); //Campo para ingresar una nueva palabra
+                int opcion = JOptionPane.showConfirmDialog(null, palabraOculta, "Ingresa la palabra a adivinar:", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+                if (opcion == JOptionPane.OK_OPTION) {
+                    String palabra = new String(palabraOculta.getPassword()); //Obtenemos la nueva palabra
+                    
+                    actualizarInterfaz(); //Actualizamos la interfaz
+                    mensajeFinal.setText(""); //Limpiamos el mensaje final
+                }
+            }
+        });
+
+        //Añadimos los componente creados anteriormente a la ventana:
+        add(imagen);
+        add(palabraSecreta);
+        add(letrasUsadas);
+        add(mensajeFinal);
+        add(ingresarLetra);
+        add(btnIngresar);
+        add(btnReiniciar);
+
+        setVisible(true); //Hacemos la ventana visible
+    }
+
+    public static void main(String[] args) {
         
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Interfaz().iniciar(); // Inicia la interfaz
+            }
+        });
     }
 }
