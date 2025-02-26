@@ -10,6 +10,7 @@ import java.awt.event.*;
  */
 public class Interfaz extends javax.swing.JFrame {
 
+    private Logica ahorcado;
     final private Font fuente = new Font("Segoe print", Font.BOLD, 18);
     JButton ingresar, reiniciar;
     private JLabel imagen;

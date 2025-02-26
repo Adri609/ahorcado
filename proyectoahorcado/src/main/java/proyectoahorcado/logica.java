@@ -30,19 +30,12 @@ public class Logica {
         letrasUsadas.add(letra);
         boolean acierto = false;
 
-        /*Se recorre la palabra para ver si está en la palabra oculta
+        //Se recorre la palabra para ver si la letra está en la palabra oculta
         for (int i = 0; i < palabra.length(); i++) {
             if(palabra.charAt(i) == letra) {
                 progresoPalabra.setCharAt(i, letra);
                 acierto = true;
             }
-        } */
-
-        //Mejor manera de hacer lo mismo de arriba:
-        int retorno = palabra.indexOf(letra);
-        if (retorno >= 0){
-            progresoPalabra.setCharAt(retorno, letra); //Si la letra está en nuestra palabra sustituimos el guión bajo por la letra
-            acierto = true;
         }
 
         //Si no se ha acertado se reduce el número de intentos
@@ -65,8 +58,10 @@ public class Logica {
 
     //Funciókn para commprobar si ha terminado la partida:
     public boolean partidaTerminada() {
-        return intentos == 0 || progresoPalabra.toString().equals(palabra);
+        //return intentos == 0 || progresoPalabra.toString().equals(palabra);
         //La partida se termina si nos quedamos sin intentos o si se adivina la palabra
+        //Mejora a la línea 61 reutilizando la funnción victoria:
+        return intentos == 0 || victoria();
     }
 
     //Verificamos si hay victoria
