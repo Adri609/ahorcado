@@ -30,12 +30,19 @@ public class logica {
         letrasUsadas.add(letra);
         boolean acierto = false;
 
-        //Se recorre la palabra para ver si está en la palabra oculta
+        /*Se recorre la palabra para ver si está en la palabra oculta
         for (int i = 0; i < palabra.length(); i++) {
             if(palabra.charAt(i) == letra) {
-                progresoPalabra.setCharAt(i, letra); //Si la letra está en nuestra palabra sustituimos el guión bajo por la letra
+                progresoPalabra.setCharAt(i, letra);
                 acierto = true;
             }
+        } */
+
+        //Mejor manera de hacer lo mismo de arriba:
+        int retorno = palabra.indexOf(letra);
+        if (retorno >= 0){
+            progresoPalabra.setCharAt(retorno, letra); //Si la letra está en nuestra palabra sustituimos el guión bajo por la letra
+            acierto = true;
         }
 
         //Si no se ha acertado se reduce el número de intentos
@@ -71,13 +78,5 @@ public class logica {
     //Función que devuelve las letras que ya se han ingresado:
     public HashSet<Character> getLetrasUsadas() {
         return letrasUsadas;
-    }
-
-    //Hacemos una función para reiniciar la partida, declaramos una nueva variable para palabra nueva:
-    public void reiniciar(String palabraNueva) {
-        this.palabra = palabraNueva.toLowerCase();
-        this.progresoPalabra = new StringBuilder("_".repeat(palabraNueva.length()));
-        this.letrasUsadas.clear(); //Limpiamos el "array" creado con HashSet.
-        this.intentos = 6; //Reiniciamos los intentos
     }
 }
