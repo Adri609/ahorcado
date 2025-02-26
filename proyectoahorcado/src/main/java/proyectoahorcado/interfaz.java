@@ -8,11 +8,11 @@ import java.awt.event.*;
  *
  * @author Bogdan Adrián Tucaciuc
  */
-public class interfaz extends javax.swing.JFrame {
+public class Interfaz extends javax.swing.JFrame {
 
     final private Font fuente = new Font("Segoe print", Font.BOLD, 18);
     JButton ingresar, reiniciar;
-    private JLabel dibujo;
+    private JLabel imagen;
     private JTextArea palabraSecreta, letrasUsadas, mensajeFinal;
     private JTextPane ingresarLetra;
 
@@ -24,8 +24,8 @@ public class interfaz extends javax.swing.JFrame {
 
         //Se pide la palabra oculta
         JPasswordField palabraOculta = new JPasswordField();
-        JOptionPane.showConfirmDialog(null, palabraOculta, "ingresa la palabra a adivinar:", JOptionPane.OK_CANCEL_OPTION);
-        
+        JOptionPane.showConfirmDialog(null, palabraOculta, "ingresa la palabra a adivinar:", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
 
 
     }

@@ -2,7 +2,7 @@ package proyectoahorcado;
 
 import java.util.HashSet;
 
-public class logica {
+public class Logica {
     
     //Variable donde se guardará la palabra a adivinar
     private String palabra;
@@ -13,7 +13,7 @@ public class logica {
     private int intentos; //Variable para los intentos restantes.
 
     //Creamos un constructor que iniciará el juego con una palabra
-    public logica(String palabra) {
+    public Logica(String palabra) {
         this.palabra = palabra.toLowerCase(); //Pasamos la palabra ingresada a minúscula para evitar conflictos
         //La siguiente línea sustituirá la palabra por guiones bajos
         this.progresoPalabra = new StringBuilder("_".repeat(palabra.length()));
