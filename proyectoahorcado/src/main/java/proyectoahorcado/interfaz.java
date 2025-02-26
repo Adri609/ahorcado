@@ -14,7 +14,7 @@ public class Interfaz extends javax.swing.JFrame {
      private void actualizarInterfaz() {
         palabraSecreta.setText(ahorcado.getProgresoPalabra()); // Actualiza el progreso de la palabra
         letrasUsadas.setText("Letras usadas: " + ahorcado.getLetrasUsadas().toString()); // Actualiza las letras usadas
-        imagen.setIcon(new ImageIcon("resources/ahorcado" + (6 - ahorcado.getIntentos()) + ".png")); // Actualiza la imagen del ahorcado
+        imagen.setIcon(new ImageIcon("resources/ahorcado" + (0 + ahorcado.getIntentos()) + ".png")); // Actualiza la imagen del ahorcado
     }
 
     private Logica ahorcado;
@@ -95,7 +95,7 @@ public class Interfaz extends javax.swing.JFrame {
                 int opcion = JOptionPane.showConfirmDialog(null, palabraOculta, "Ingresa la palabra a adivinar:", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (opcion == JOptionPane.OK_OPTION) {
                     String palabra = new String(palabraOculta.getPassword()); //Obtenemos la nueva palabra
-                    
+                    ahorcado.reiniciar(palabra);
                     actualizarInterfaz(); //Actualizamos la interfaz
                     mensajeFinal.setText(""); //Limpiamos el mensaje final
                 }
