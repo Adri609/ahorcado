@@ -80,5 +80,4 @@ public class logica {
         this.letrasUsadas.clear(); //Limpiamos el "array" creado con HashSet.
         this.intentos = 6; //Reiniciamos los intentos
     }
-
 }
