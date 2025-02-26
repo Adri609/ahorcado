@@ -74,4 +74,12 @@ public class Logica {
     public HashSet<Character> getLetrasUsadas() {
         return letrasUsadas;
     }
+
+    //Función para reiniciar la partida
+    public void reiniciar(String palabraNueva) {
+        this.palabra = palabraNueva.toLowerCase();
+        this.progresoPalabra = new StringBuilder("_".repeat(palabraNueva.length()));
+        this.letrasUsadas.clear(); //Limpiamos el "array" creado con HashSet.
+        this.intentos = 6; //Reiniciamos los intentos
+    }
 }
