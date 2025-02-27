@@ -14,7 +14,7 @@ public class Interfaz extends javax.swing.JFrame {
     private void actualizarInterfaz() {
         palabraSecreta.setText(ahorcado.getProgresoPalabra()); // Actualiza el progreso de la palabra
         letrasUsadas.setText("Letras usadas: " + ahorcado.getLetrasUsadas().toString()); // Actualiza las letras usadas
-        imagen.setIcon(new ImageIcon("resources/ahorcado" + (0 + ahorcado.getIntentos()) + ".png")); // Actualiza la imagen del ahorcado
+        imagen.setIcon(new ImageIcon("resources/ahorcado" + (6 - ahorcado.getIntentos()) + ".png")); // Actualiza la imagen del ahorcado
     }
 
     private Logica ahorcado;
@@ -93,7 +93,7 @@ public class Interfaz extends javax.swing.JFrame {
                         if (ahorcado.victoria()) { // Verificar si se ha ganado
                             mensajeFinal.setText("Felicidades, has ganado...");
                         } else { // Si no se ha ganado, es que se ha perdido
-                            mensajeFinal.setText("Jodete, la palabra era: " + ahorcado.getProgresoPalabra() + " ¡Ja!");
+                            mensajeFinal.setText("Jodete, la palabra era: " + ahorcado.getPalabra() + " ¡Ja!");
                         }
                     }
                 } else {
